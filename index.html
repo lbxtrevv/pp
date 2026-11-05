@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Opening Page...</h2>
+    <p>If the window did not open automatically, please click below:</p>
+    <button onclick="openLink()">Open Link</button>
+</div>
+
+<script>
+function openLink() {
+    const newWindow = window.open('about:blank', '_blank');
+    
+    if (newWindow) {
+        newWindow.document.body.style.margin = '0';
+        newWindow.document.body.style.height = '100vh';
+        
+        const iframe = newWindow.document.createElement('iframe');
+        iframe.src = 'https://github.io';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        
+        newWindow.document.body.appendChild(iframe);
+    }
+}
+
+// Attempt to open automatically on page load
+window.onload = function() {
+    openLink();
+};
+</script>
+
+</body>
+</html>
